@@ -3,6 +3,7 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
 :root {
     --color-primary: #FF577F;
+    --color-primary-hover: #FF427F;
     --color-primary-focus: #FF427F;
     --color-primary-negative: #59323F;
     --color-grey4: #121214;
@@ -51,11 +52,21 @@ button {
     font-weight: 500;
     font-size: 1rem;
 
-    height: 48px;
-    min-width: 48px;
+    height: 40px;
+    min-width: 40px;
 
     padding: 0 22px;
 
     border-radius: var(--radius-4);
+    border: none;
+
+    transition: .5s;
+}
+
+label {
+    font-weight: 400;
+    font-size: 0.75rem;
+    
+    color: var(--color-text);
 }
 `;
