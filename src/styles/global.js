@@ -3,6 +3,7 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
 :root {
     --color-primary: #FF577F;
+    --color-primary-hover: #FF427F;
     --color-primary-focus: #FF427F;
     --color-primary-negative: #59323F;
     --color-grey4: #121214;
@@ -57,5 +58,8 @@ button {
     padding: 0 22px;
 
     border-radius: var(--radius-4);
+    border: none;
+
+    transition: .5s;
 }
 `;
