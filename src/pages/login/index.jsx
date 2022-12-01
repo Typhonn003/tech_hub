@@ -4,8 +4,13 @@ import { PrimaryButton, StyledLink } from "../../components/Button/Default";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { toast } from 'react-toastify';
+import { useState } from "react";
+import { api } from "../../services/api";
 
 export function LoginPage() {
+
+  const [ loading, setLoading ] = useState(false)
 
   const loginSchema = yup.object().shape({
     email: yup.string()
@@ -15,14 +20,28 @@ export function LoginPage() {
       .required("Senha obrigatória*")
   })
 
-  const { register, handleSubmit, formState: { errors }, reset } = useForm({
+  const { register, handleSubmit, formState: { errors }} = useForm({
     mode: "onChange",
     resolver: yupResolver(loginSchema)
   })
 
-  function onSubmitFunction(data) {
-    console.log(data)
-    reset()
+  async function userLogin(userData) {
+
+    try {
+      
+      setLoading(true)
+      const response = await api.post("sessions", userData)      
+      localStorage.setItem("user_token", response.data.token)
+    }
+
+    catch (error) {
+
+      toast.error("Usuário ou senha incorreto")
+    }
+
+    finally {
+      setLoading(false)
+    }
   }
     
   return (
@@ -30,7 +49,7 @@ export function LoginPage() {
       <div className="container">
         <h1 className="title1">Kenzie Hub</h1>
 
-        <form onSubmit={handleSubmit(onSubmitFunction)}>
+        <form onSubmit={handleSubmit(userLogin)}>
           <h2 className="title2">Login</h2>
             <Input 
               type="email" 
@@ -39,6 +58,7 @@ export function LoginPage() {
               register={register("email")} 
               placeholder="Digite seu email"
               error={errors.email?.message && <span aria-label="error">{errors.email.message}</span>}
+              disabled={loading}
             />            
             <Input
               type="password"
@@ -47,8 +67,11 @@ export function LoginPage() {
               register={register("password")}            
               placeholder="Digite sua senha"
               error={errors.password?.message && <span aria-label="error">{errors.password.message}</span>}
+              disabled={loading}
             />            
-          <PrimaryButton type="submit">Entrar</PrimaryButton>
+          <PrimaryButton type="submit" disabled={loading}>
+            {loading ? "Entrando..." : "Entrar"}
+          </PrimaryButton>
 
           <p>Ainda não possui uma conta?</p>
 
