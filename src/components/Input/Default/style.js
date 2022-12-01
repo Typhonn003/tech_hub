@@ -5,7 +5,6 @@ export const StyledInput = styled.input`
 
   height: 40px;
   width: 100%;
-  max-width: 264px;
 
   outline: none;
 
@@ -29,10 +28,10 @@ export const StyledInput = styled.input`
     border: 2px solid var(--color-grey0);
   }
 
-  input:-webkit-autofill,
-  input:-webkit-autofill:hover,
-  input:-webkit-autofill:focus,
-  input:-webkit-autofill:active {
+  :-webkit-autofill,
+  :-webkit-autofill:hover,
+  :-webkit-autofill:focus,
+  :-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 30px var(--color-grey2) inset !important;
     box-shadow: 0 0 0 30px var(--color-grey2) inset !important;
     -webkit-text-fill-color: var(--color-grey0);

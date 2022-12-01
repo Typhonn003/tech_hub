@@ -69,4 +69,16 @@ label {
     
     color: var(--color-text);
 }
+
+.container {
+    width: 90vw;
+    
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: 60rem;
+    }
+}
 `;
