@@ -46,6 +46,17 @@ export const StyledDiv = styled.div`
     gap: 0.5rem;
     position: relative;
   }
+
+  span {
+    position: absolute;
+    bottom: -16px;
+    right: 0;
+
+    font-weight: 500;
+    font-size: 0.75rem;
+
+    color: var(--color-primary);
+  }
 `;
 
 export const StyledHeader = styled.header`
