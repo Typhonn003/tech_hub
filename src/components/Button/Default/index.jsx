@@ -1,23 +1,16 @@
 import { StyledPrimaryButton, StyledNegativeButton, StyledDisableButton, StyledLink as Link } from "./style";
 
-export function PrimaryButton({ children, onClick, type }) {
+export function PrimaryButton({ children, onClick, type, disabled }) {
 
   return (
-    <StyledPrimaryButton type={type} onClick={onClick}>{children}</StyledPrimaryButton>
+    <StyledPrimaryButton type={type} onClick={onClick} disabled={disabled}>{children}</StyledPrimaryButton>
   );
 }
 
-export function NegativeButton({ children, onClick, type }) {
+export function NegativeButton({ children, onClick, type, disabled }) {
 
   return (
-    <StyledNegativeButton type={type} onClick={onClick}>{children}</StyledNegativeButton>
-  );
-}
-
-export function DisableButton({ children, onClick, type }) {
-    
-  return (
-    <StyledDisableButton type={type} onClick={onClick}>{children}</StyledDisableButton>
+    <StyledNegativeButton type={type} onClick={onClick} disabled={disabled}>{children}</StyledNegativeButton>
   );
 }
 

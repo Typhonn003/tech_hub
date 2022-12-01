@@ -7,8 +7,12 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { toast } from 'react-toastify';
+import { useState } from "react";
+import { api } from "../../services/api";
 
 export function RegisterPage() {
+
+  const [ loading, setLoading ] = useState(false)
 
   const registerSchema = yup.object().shape({
     name: yup.string()
@@ -45,18 +49,23 @@ export function RegisterPage() {
     resolver: yupResolver(registerSchema)
   });
 
-  function onSubmitFunction(data) {
-    console.log(data);
-    /* toast.success("Conta criada com sucesso", {
-      position: "bottom-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-      }); */
+  async function userRegister(userData) {
+
+    try {
+      
+      setLoading(true)
+      await api.post("users", userData)
+      toast.success("Conta criada com sucesso")
+    }
+
+    catch (error) {
+
+      toast.error("Email já cadastrado")
+    }
+
+    finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -68,7 +77,7 @@ export function RegisterPage() {
         </StyledHeader>
 
         <main>
-          <form onSubmit={handleSubmit(onSubmitFunction)}>
+          <form onSubmit={handleSubmit(userRegister)}>
             <h2 className="title2">Crie sua conta</h2>
             <p>Rapido e grátis, vamos nessa!</p>
             <Input
@@ -78,6 +87,7 @@ export function RegisterPage() {
               register={register("name")}
               placeholder="Digite seu nome"
               error={errors.name?.message && <span aria-label="error">{errors.name.message}</span>}
+              disabled={loading}
             />
             <Input
               type="email"
@@ -86,6 +96,7 @@ export function RegisterPage() {
               register={register("email")}
               placeholder="Digite seu email"
               error={errors.email?.message && <span aria-label="error">{errors.email.message}</span>}
+              disabled={loading}
             />
             <Input
               type="password"
@@ -94,6 +105,7 @@ export function RegisterPage() {
               register={register("password")}
               placeholder="Digite sua senha"
               error={errors.password?.message && <span aria-label="error">{errors.password.message}</span>}
+              disabled={loading}
             />
             <Input
               type="password"
@@ -102,6 +114,7 @@ export function RegisterPage() {
               register={register("confirm_password")}
               placeholder="Confirme sua senha"
               error={errors.confirm_password?.message && <span aria-label="error">{errors.confirm_password.message}</span>}
+              disabled={loading}
             />
             <Input
               type="text"
@@ -110,25 +123,30 @@ export function RegisterPage() {
               register={register("bio")}
               placeholder="Fale sobre você"
               error={errors.bio?.message && <span aria-label="error">{errors.bio.message}</span>}
+              disabled={loading}
             />
             <Input
-              type="tel"
+              type="text"
               id="contact"
               label="Contato"
               register={register("contact")}
               placeholder="Opção de contato"
               error={errors.contact?.message && <span aria-label="error">{errors.contact.message}</span>}
+              disabled={loading}
             />
             <Select
               id="course_module"
               label="Selecionar módulo"
               register={register("course_module")}
+              disabled={loading}
             >
               <option value="Primeiro Módulo">Primeiro módulo</option>
               <option value="Segundo módulo">Segundo módulo</option>
               <option value="Terceiro módulo">Terceiro módulo</option>
             </Select>
-            <PrimaryButton type="submit">Cadastrar</PrimaryButton>
+            <PrimaryButton type="submit" disabled={loading}>
+              {loading ? "Cadastrando..." : "Cadastrar"}
+            </PrimaryButton>
           </form>
         </main>
       </div>

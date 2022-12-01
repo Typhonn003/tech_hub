@@ -9,18 +9,14 @@ export const StyledPrimaryButton = styled(StyledButton)`
   :hover {
     background-color: var(--color-primary-hover);
   }
+
+  :disabled {
+    background-color: var(--color-grey1);
+  }
 `;
 
 export const StyledNegativeButton = styled(StyledButton)`
   background-color: var(--color-primary-negative);
-`;
-
-export const StyledDisableButton = styled(StyledButton)`
-  background-color: var(--color-grey1);
-
-  :hover {
-    background-color: var(--color-grey2);
-  }
 `;
 
 export const StyledLink = styled(Link)`
