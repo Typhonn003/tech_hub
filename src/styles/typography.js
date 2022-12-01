@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components";
 export const Typography = createGlobalStyle`
 .title1 {
     font-weight: 700;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
 }
 
 .title2 {

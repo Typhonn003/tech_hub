@@ -5,7 +5,6 @@ export const StyledSelect = styled.select`
 
   height: 40px;
   width: 100%;
-  max-width: 264px;
 
   outline: none;
 

@@ -1,8 +1,12 @@
 import { StyledSelect } from "./style";
 
-export function Select({ children, id }) {
+export function Select({ children, id, label, register, error }) {
 
   return (
-    <StyledSelect id={id}>{children}</StyledSelect>
+    <fieldset>
+      <label htmlFor={id}>{label}</label>
+      <StyledSelect id={id} {...register}>{children}</StyledSelect>
+      {error}
+    </fieldset>
   );
 }
