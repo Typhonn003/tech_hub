@@ -6,6 +6,7 @@ import { PrimaryButton } from "../../components/Button/Default";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { toast } from 'react-toastify';
 
 export function RegisterPage() {
 
@@ -34,13 +35,28 @@ export function RegisterPage() {
       .max(50, "Máximo de 50 caracteres"),
 
     contact: yup.string()
-      .required("Opção de contato obrigatório*"),
+      .required("Opção de contato obrigatório*")
+      .min(10, "Pelo menos 10 caracteres")
+      .max(50, "Máximo de 50 caracteres"),
   });
 
-  const { register, handleSubmit, formState: { errors } } = useForm({resolver: yupResolver(registerSchema)});
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    mode: "onChange",
+    resolver: yupResolver(registerSchema)
+  });
 
   function onSubmitFunction(data) {
     console.log(data);
+    /* toast.success("Conta criada com sucesso", {
+      position: "bottom-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      }); */
   }
 
   return (
