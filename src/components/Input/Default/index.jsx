@@ -1,8 +1,12 @@
 import { StyledInput } from "./style";
 
-export function Input({ children, id,  type, placeholder }) {
+export function Input({ children, id, label, type, placeholder, register, error }) {
   
   return (
-    <StyledInput type={type} placeholder={placeholder} id={id}>{children}</StyledInput>
+    <fieldset>
+      <label htmlFor={id}>{label}</label>
+      <StyledInput type={type} placeholder={placeholder} id={id} {...register}>{children}</StyledInput>
+      {error}
+    </fieldset>
   );
 }

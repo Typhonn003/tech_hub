@@ -3,9 +3,6 @@ import styled from "styled-components";
 export const StyledDiv = styled.div`
   background-color: var(--color-black);
 
-  width: 100vw;
-  height: 100vh;
-
   div:first-child {
     display: flex;
     flex-direction: column;
@@ -14,14 +11,15 @@ export const StyledDiv = styled.div`
     align-items: center;
     justify-content: center;
 
-    width: 100%;
-    height: 100%;
+    min-height: 100vh;
   }
 
   h1 {
     text-align: center;
 
     color: var(--color-primary);
+
+    margin-top: 2rem;
   }
 
   h2 {
@@ -29,18 +27,40 @@ export const StyledDiv = styled.div`
   }
 
   form {
+    box-sizing: border-box;
+
     display: flex;
     flex-direction: column;
     gap: 1.5em;
 
     width: 100%;
-    max-width: 300px;
+    max-width: 360px;
 
     background-color: var(--color-grey3);
 
     padding: 34px 18px;
 
     border-radius: var(--radius-4);
+
+    margin-bottom: 2rem;
+  }
+
+  fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: relative;
+  }
+
+  span {
+    position: absolute;
+    bottom: -16px;
+    right: 0;
+
+    font-weight: 500;
+    font-size: 0.75rem;
+
+    color: var(--color-primary);
   }
 
   p {
@@ -51,15 +71,4 @@ export const StyledDiv = styled.div`
 
     color: var(--color-grey1);
   }
-`;
-
-export const StyledSpacer = styled.div`
-  box-sizing: border-box;
-
-  display: flex;
-  flex-direction: column;
-
-  gap: 0.5rem;
-
-  width: 100%;
 `;
