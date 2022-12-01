@@ -36,6 +36,7 @@ export const StyledLink = styled(Link)`
   border-radius: var(--radius-4);
   border: none;
 
+  transition: .5s;
   :hover {
     background-color: var(--color-grey2);
   }
