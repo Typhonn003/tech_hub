@@ -42,6 +42,7 @@ time, mark, audio, video {
 	font: inherit;
     font-family: 'Inter', sans-serif;
 	vertical-align: baseline;
+    color: var(--color-text);
 }
 
 button {

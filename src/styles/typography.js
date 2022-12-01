@@ -21,18 +21,14 @@ export const Typography = createGlobalStyle`
     font-size: 0.75rem;
 }
 
-.headlineBold {
+.headline_bold {
     font-weight: 700;
     font-size: 0.75rem;
 }
 
-.headlineItalic {
+.headline_italic {
     font-weight: 400;
     font-size: 0.75rem;
     font-style: italic;
-}
-
-.title1, .title2, .title3, .headline, .headlineBold, .headlineItalic {
-    color: var(--color-text);
 }
 `;

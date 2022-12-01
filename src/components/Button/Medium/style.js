@@ -2,16 +2,16 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const StyledMediumButton = styled.button`
-    height: 32px;
-`
+  height: 32px;
+`;
 
 export const StyledCommonButton = styled(StyledMediumButton)`
-    background-color: var(--color-grey3);
+  background-color: var(--color-grey3);
 
-    :hover {
-        background-color: var(--color-grey2);
-    }
-`
+  :hover {
+    background-color: var(--color-grey2);
+  }
+`;
 
 export const StyledLink = styled(Link)`
   cursor: pointer;
@@ -24,7 +24,7 @@ export const StyledLink = styled(Link)`
 
   background-color: var(--color-grey3);
 
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 500;
   font-size: 1rem;
   text-decoration: none;
@@ -35,4 +35,8 @@ export const StyledLink = styled(Link)`
 
   border-radius: var(--radius-4);
   border: none;
-`
+
+  :hover {
+    background-color: var(--color-grey2);
+  }
+`;
