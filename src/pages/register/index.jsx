@@ -9,10 +9,13 @@ import * as yup from "yup";
 import { toast } from 'react-toastify';
 import { useState } from "react";
 import { api } from "../../services/api";
+import { useNavigate } from "react-router-dom";
 
 export function RegisterPage() {
 
   const [ loading, setLoading ] = useState(false)
+
+  const navigate = useNavigate()
 
   const registerSchema = yup.object().shape({
     name: yup.string()
@@ -56,6 +59,8 @@ export function RegisterPage() {
       setLoading(true)
       await api.post("users", userData)
       toast.success("Conta criada com sucesso")
+
+      setTimeout(() => navigate("/login"), 4500)
     }
 
     catch (error) {

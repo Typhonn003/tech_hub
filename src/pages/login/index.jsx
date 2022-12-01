@@ -7,10 +7,13 @@ import * as yup from "yup";
 import { toast } from 'react-toastify';
 import { useState } from "react";
 import { api } from "../../services/api";
+import { useNavigate } from "react-router-dom";
 
 export function LoginPage() {
 
   const [ loading, setLoading ] = useState(false)
+  
+  const navigate = useNavigate()
 
   const loginSchema = yup.object().shape({
     email: yup.string()
@@ -32,6 +35,8 @@ export function LoginPage() {
       setLoading(true)
       const response = await api.post("sessions", userData)      
       localStorage.setItem("user_token", response.data.token)
+
+      navigate("/dashboard")
     }
 
     catch (error) {
