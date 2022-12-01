@@ -65,6 +65,7 @@ export function RegisterPage() {
 
     catch (error) {
 
+      console.log(error)
       toast.error("Email já cadastrado")
     }
 

@@ -41,6 +41,7 @@ export function LoginPage() {
 
     catch (error) {
 
+      console.log(error)
       toast.error("Usuário ou senha incorreto")
     }
 
