@@ -3,8 +3,8 @@ import { createContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { api } from "../services/api";
-import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
+import { loginSchema } from "../validations/LoginSchema";
 
 export const UserContext = createContext({});
 
@@ -12,17 +12,6 @@ export function UserProvider({ children }) {
 
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-
-  const loginSchema = yup.object().shape({
-    email: yup
-      .string()
-      .required("Email obrigatório*")
-      .email("Email inválido"),
-
-    password: yup
-      .string()
-      .required("Senha obrigatória*"),
-  });
 
   const { register, handleSubmit, formState: { errors }} = useForm({
     mode: "onChange",
