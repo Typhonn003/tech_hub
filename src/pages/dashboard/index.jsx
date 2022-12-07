@@ -3,19 +3,13 @@ import { StyledDiv, StyledHeader, StyledSection } from "./style";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { AuthContext } from "../../contexts/AuthContext";
-import { Navigate } from "react-router-dom";
 
 export function DashboardPage() {
 
   const { logout } = useContext(UserContext)
-  const { loadUserLoading, user } = useContext(AuthContext)
+  const { user } = useContext(AuthContext)
 
-  if (loadUserLoading) {
-
-    return null
-  }
-
-  return user ? (
+  return (
     <StyledDiv>
       <nav>
         <div className="container">
@@ -44,7 +38,5 @@ export function DashboardPage() {
         </StyledSection>
       </main>
     </StyledDiv>
-  ) : (
-    <Navigate to="/login" />
   )
 }

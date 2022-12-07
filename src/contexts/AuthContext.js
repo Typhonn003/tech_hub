@@ -33,12 +33,10 @@ export function AuthProvider({ children }) {
       }
 
       try {
+
+        api.defaults.headers.common.authorization = `Bearer ${token}`
         
-        const response = await api.get("profile", {
-          headers: {
-            authorization: `Bearer ${token}`
-          }
-        })
+        const response = await api.get("profile")
 
         setUser(response.data)
       } catch (error) {
@@ -65,7 +63,9 @@ export function AuthProvider({ children }) {
       setUser(userResponse)
       localStorage.setItem("user_token", token)
 
-      navigate("/dashboard")
+      api.defaults.headers.common.authorization = `Bearer ${token}`
+
+      navigate("/dashboard", { replace: true })
     }
 
     catch (error) {
@@ -78,6 +78,8 @@ export function AuthProvider({ children }) {
       setLoading(false)
     }
   }
+
+  
 
   return (
     <AuthContext.Provider
