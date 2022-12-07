@@ -1,54 +1,13 @@
 import { StyledDiv } from "./style";
 import { Input } from "../../components/Input/Default";
 import { PrimaryButton, StyledLink } from "../../components/Button/Default";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import { toast } from 'react-toastify';
-import { useState } from "react";
-import { api } from "../../services/api";
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
+
 
 export function LoginPage() {
 
-  const [ loading, setLoading ] = useState(false)
-  
-  const navigate = useNavigate()
-
-  const loginSchema = yup.object().shape({
-    email: yup.string()
-      .required("Email obrigatório*")
-      .email("Email inválido"),
-    password: yup.string()
-      .required("Senha obrigatória*")
-  })
-
-  const { register, handleSubmit, formState: { errors }} = useForm({
-    mode: "onChange",
-    resolver: yupResolver(loginSchema)
-  })
-
-  async function userLogin(userData) {
-
-    try {
-      
-      setLoading(true)
-      const response = await api.post("sessions", userData)      
-      localStorage.setItem("user_token", response.data.token)
-
-      navigate("/dashboard")
-    }
-
-    catch (error) {
-
-      console.log(error)
-      toast.error("Usuário ou senha incorreto")
-    }
-
-    finally {
-      setLoading(false)
-    }
-  }
+  const { handleSubmit, userLogin, register, loading, errors } = useContext(UserContext)
     
   return (
     <StyledDiv>
