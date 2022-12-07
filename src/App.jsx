@@ -1,10 +1,9 @@
 import { AllRoutes as Routes } from "./routes";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { UserProvider } from "./contexts/UserContext";
+import { AuthProvider } from "./contexts/AuthContext";
 
 export function App() {
-
   return (
     <>
       <ToastContainer
@@ -18,9 +17,9 @@ export function App() {
         draggable
         theme="dark"
       />
-      <UserProvider>
+      <AuthProvider>
         <Routes />
-      </UserProvider>
+      </AuthProvider>
     </>
   );
 }

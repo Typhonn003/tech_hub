@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { RegisterProvider } from "../contexts/RegisterContext";
+import { UserProvider } from "../contexts/UserContext";
 import { DashboardPage } from "../pages/dashboard";
 import { LoginPage } from "../pages/login";
 import { RegisterPage } from "../pages/register";
@@ -17,7 +18,14 @@ export function AllRoutes() {
           </RegisterProvider>
         }
       />
-      <Route path="/dashboard" element={<DashboardPage />} />
+      <Route
+        path="/dashboard"
+        element={
+          <UserProvider>
+            <DashboardPage />
+          </UserProvider>
+        }
+      />
       <Route path="*" element={<Navigate to="/login" />} />
     </Routes>
   );

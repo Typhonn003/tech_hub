@@ -1,47 +1,21 @@
-import { useNavigate } from "react-router-dom";
 import { CommonButton } from "../../components/Button/Medium";
 import { StyledDiv, StyledHeader, StyledSection } from "./style";
-import { api } from "../../services/api";
-import { toast } from 'react-toastify';
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
+import { AuthContext } from "../../contexts/AuthContext";
+import { Navigate } from "react-router-dom";
 
 export function DashboardPage() {
 
-  const [actualUserInfo, setactualUserInfo] = useState("")
+  const { logout } = useContext(UserContext)
+  const { loadUserLoading, user } = useContext(AuthContext)
 
-  const navigate = useNavigate();
+  if (loadUserLoading) {
 
-  function logout() {
-
-    localStorage.clear();
-    navigate("/login");
+    return null
   }
 
-  const token = localStorage.getItem("user_token")
-
-  useEffect(() => {
-    
-    async function userInfo() {
-
-      const config = {
-        headers: { Authorization: `Bearer ${token}` },
-      };
-
-      try {
-
-        const response = await api.get("profile", config);
-        setactualUserInfo(response.data);
-      } catch (error) {
-
-        console.log(error);
-        toast.error("Não foi possível carregar os dados")
-      }
-    }
-
-    userInfo();
-  }, [token]);
-
-  return (
+  return user ? (
     <StyledDiv>
       <nav>
         <div className="container">
@@ -51,19 +25,26 @@ export function DashboardPage() {
       </nav>
       <StyledHeader>
         <div className="container">
-          <h2 className="title1">{actualUserInfo ? `Olá, ${actualUserInfo.name}` : "Olá, usuário misterioso"}</h2>
-          {actualUserInfo ? <p className="headline_bold">{actualUserInfo.course_module}</p> : null}
+          <h2 className="title1">Olá, {`${user.name}`}</h2>
+          <p className="headline_bold">{user.course_module}</p>
         </div>
       </StyledHeader>
 
       <main>
         <StyledSection>
           <div className="container">
-            <h2 className="title1">Que pena! Estamos em desenvolvimento <span>:(</span></h2>
-            <p>Nossa aplicação está em desenvolvimento, em breve teremos novidades</p>
+            <h2 className="title1">
+              Que pena! Estamos em desenvolvimento <span>:(</span>
+            </h2>
+            <p>
+              Nossa aplicação está em desenvolvimento, em breve teremos
+              novidades
+            </p>
           </div>
         </StyledSection>
       </main>
     </StyledDiv>
-  );
+  ) : (
+    <Navigate to="/login" />
+  )
 }
