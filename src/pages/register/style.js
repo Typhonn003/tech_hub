@@ -1,11 +1,6 @@
 import styled from "styled-components";
 
 export const StyledDiv = styled.div`
-
-  div {
-    max-width: 360px;
-  }
-
   h2 {
     text-align: center;
   }
@@ -37,6 +32,12 @@ export const StyledDiv = styled.div`
     margin-bottom: 2rem;
   }
 
+  form > div {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
   fieldset {
     display: flex;
     flex-direction: column;
@@ -53,6 +54,33 @@ export const StyledDiv = styled.div`
     font-size: 0.75rem;
 
     color: var(--color-primary);
+  }
+
+  @media (min-width: 600px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 100vh;
+
+    form > div {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+`;
+
+export const StyledSpacer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  @media (min-width: 600px) {
+    width: 50%;
+
+    button {
+      height: 100%;
+    }
   }
 `;
 
