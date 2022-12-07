@@ -45,6 +45,10 @@ time, mark, audio, video {
     color: var(--color-text);
 }
 
+body {
+    background-color: var(--color-black);
+}
+
 button {
     cursor: pointer;
 

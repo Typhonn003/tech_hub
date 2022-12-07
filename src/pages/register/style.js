@@ -1,9 +1,6 @@
 import styled from "styled-components";
 
 export const StyledDiv = styled.div`
-  background-color: var(--color-black);
-
-  height: 900px;
 
   div {
     max-width: 360px;
