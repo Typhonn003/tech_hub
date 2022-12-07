@@ -10,80 +10,79 @@ export const AuthContext = createContext({});
 
 export function AuthProvider({ children }) {
 
-  const [loading, setLoading] = useState(false)
-  const [loadUserLoading, setLoadUserLoading] = useState(true)
-  const [user, setUser] = useState(null)
-  const navigate = useNavigate()
+  const [loading, setLoading] = useState(false);
+  const [loadUserLoading, setLoadUserLoading] = useState(true);
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
-  const { register, handleSubmit, formState: { errors }} = useForm({
+  const { register, handleSubmit, formState: { errors } } = useForm({
     mode: "onChange",
-    resolver: yupResolver(loginSchema)
-  })
+    resolver: yupResolver(loginSchema),
+  });
 
   useEffect(() => {
 
     async function loadUser() {
 
-      const token = localStorage.getItem("user_token")
+      const token = localStorage.getItem("user_token");
 
       if (!token) {
 
-        setLoadUserLoading(false)
-        return
+        setLoadUserLoading(false);
+        return;
       }
 
       try {
 
-        api.defaults.headers.common.authorization = `Bearer ${token}`
-        
-        const response = await api.get("profile")
+        api.defaults.headers.common.authorization = `Bearer ${token}`;
 
-        setUser(response.data)
+        const response = await api.get("profile");
+
+        setUser(response.data);
       } catch (error) {
-        
-        console.error(error)
+
+        console.error(error);
       } finally {
 
-        setLoadUserLoading(false)
+        setLoadUserLoading(false);
       }
     }
 
-    loadUser()
-  }, [])
+    loadUser();
+  }, []);
 
   async function login(userData) {
 
     try {
       
-      setLoading(true)
-      const response = await api.post("sessions", userData)
+      setLoading(true);
+      const response = await api.post("sessions", userData);
 
-      const { token, user: userResponse } = response.data
+      setUser(response.data.user);
+      localStorage.setItem("user_token", response.data.token);
 
-      setUser(userResponse)
-      localStorage.setItem("user_token", token)
+      api.defaults.headers.common.authorization = `Bearer ${response.data.token}`;
 
-      api.defaults.headers.common.authorization = `Bearer ${token}`
-
-      navigate("/dashboard", { replace: true })
-    }
-
-    catch (error) {
-
-      console.log(error)
-      toast.error("Usuário ou senha incorreto")
-    }
-
-    finally {
-      setLoading(false)
+      navigate("/dashboard", { replace: true });
+    } catch (error) {
+      console.log(error);
+      toast.error("Usuário ou senha incorreto");
+    } finally {
+      setLoading(false);
     }
   }
 
-  
-
   return (
     <AuthContext.Provider
-      value={{ handleSubmit, login, register, loading, errors, user, loadUserLoading }}
+      value={{
+        handleSubmit,
+        login,
+        register,
+        loading,
+        errors,
+        user,
+        loadUserLoading,
+      }}
     >
       {children}
     </AuthContext.Provider>
