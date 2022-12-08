@@ -5,10 +5,23 @@ import { Select } from "../../components/Input/Select";
 import { PrimaryButton } from "../../components/Button/Default";
 import { useContext } from "react";
 import { RegisterContext } from "../../contexts/RegisterContext";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function RegisterPage() {
 
   const { loading, errors, register, handleSubmit, userRegister } = useContext(RegisterContext)
+  const navigate = useNavigate()
+
+  useEffect(() => {
+
+    const token = localStorage.getItem("user_token") || null;
+
+    if (token) {
+      
+      navigate("/dashboard", { replace: true });
+    }
+  }, [navigate]);
 
   return (
     <StyledDiv>
@@ -89,6 +102,9 @@ export function RegisterPage() {
                   <option value="Primeiro Módulo">Primeiro módulo</option>
                   <option value="Segundo módulo">Segundo módulo</option>
                   <option value="Terceiro módulo">Terceiro módulo</option>
+                  <option value="Quarto módulo">Quarto módulo</option>
+                  <option value="Quinto módulo">Quinto módulo</option>
+                  <option value="Sexto módulo">Sexto módulo</option>
                 </Select>
                 <PrimaryButton type="submit" disabled={loading}>
                   {loading ? "Cadastrando..." : "Cadastrar"}

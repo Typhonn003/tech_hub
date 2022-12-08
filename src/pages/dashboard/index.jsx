@@ -1,8 +1,9 @@
 import { CommonButton } from "../../components/Button/Medium";
-import { StyledDiv, StyledHeader, StyledSection } from "./style";
+import { StyledDiv, StyledHeader, StyledList, StyledSection } from "./style";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { AuthContext } from "../../contexts/AuthContext";
+import { TechCard } from "../../components/TechCard";
 
 export function DashboardPage() {
 
@@ -27,14 +28,15 @@ export function DashboardPage() {
       <main>
         <StyledSection>
           <div className="container">
-            <h2 className="title1">
-              Que pena! Estamos em desenvolvimento <span>:(</span>
-            </h2>
-            <p>
-              Nossa aplicação está em desenvolvimento, em breve teremos
-              novidades
-            </p>
-          </div>
+            <div>
+              <h2 className="title1">Tecnologias</h2>
+              <CommonButton>Adicionar</CommonButton>
+            </div>
+
+            <StyledList>
+              {user.techs.map(({id, title, status}) => <TechCard key={id} title={title} status={status}/>)}
+            </StyledList>
+          </div>          
         </StyledSection>
       </main>
     </StyledDiv>

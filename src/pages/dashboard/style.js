@@ -56,6 +56,24 @@ export const StyledSection = styled.section`
   div {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  div > div {
+    display: flex;
+    flex-direction: row;
   }
 `;
+
+export const StyledList = styled.ul`
+  background-color: var(--color-grey3);
+
+  border-radius: var(--radius-4);
+
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`

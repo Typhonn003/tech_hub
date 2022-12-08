@@ -43,6 +43,7 @@ time, mark, audio, video {
     font-family: 'Inter', sans-serif;
 	vertical-align: baseline;
     color: var(--color-text);
+    list-style: none;
 }
 
 body {
