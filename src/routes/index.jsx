@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { ProtectedRoutes } from "../components/ProtectedRoutes";
 import { RegisterProvider } from "../contexts/RegisterContext";
+import { TechProvider } from "../contexts/TechContext";
 import { UserProvider } from "../contexts/UserContext";
 import { DashboardPage } from "../pages/dashboard";
 import { LoginPage } from "../pages/login";
@@ -24,7 +25,9 @@ export function AllRoutes() {
           path="/dashboard"
           element={
             <UserProvider>
-              <DashboardPage />
+              <TechProvider>
+                <DashboardPage />
+              </TechProvider>
             </UserProvider>
           }
         />

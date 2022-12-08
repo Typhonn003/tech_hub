@@ -15,7 +15,7 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
-  const { register, handleSubmit, formState: { errors } } = useForm({
+  const { register, handleSubmit, formState: { errors }, reset } = useForm({
     mode: "onChange",
     resolver: yupResolver(loginSchema),
   });
@@ -62,12 +62,15 @@ export function AuthProvider({ children }) {
       localStorage.setItem("user_token", response.data.token);
 
       api.defaults.headers.common.authorization = `Bearer ${response.data.token}`;
-
-      navigate("/dashboard", { replace: true });
+      
+      reset()
+      navigate("/dashboard");
     } catch (error) {
+
       console.log(error);
       toast.error("Usuário ou senha incorreto");
     } finally {
+      
       setLoading(false);
     }
   }

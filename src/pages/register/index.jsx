@@ -5,23 +5,10 @@ import { Select } from "../../components/Input/Select";
 import { PrimaryButton } from "../../components/Button/Default";
 import { useContext } from "react";
 import { RegisterContext } from "../../contexts/RegisterContext";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 export function RegisterPage() {
 
   const { loading, errors, register, handleSubmit, userRegister } = useContext(RegisterContext)
-  const navigate = useNavigate()
-
-  useEffect(() => {
-
-    const token = localStorage.getItem("user_token") || null;
-
-    if (token) {
-      
-      navigate("/dashboard", { replace: true });
-    }
-  }, [navigate]);
 
   return (
     <StyledDiv>

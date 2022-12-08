@@ -72,7 +72,31 @@ export const StyledList = styled.ul`
 
   padding: 20px;
 
+  height: 60vh;
+
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  overflow-y: auto;
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--color-grey2);
+
+    border-radius: var(--radius-4);
+  }
+`;
+
+export const StyledEmptyList = styled.div`
+  box-sizing: border-box;
+
+  background-color: var(--color-grey3);
+
+  border-radius: var(--radius-4);
+
+  padding: 20px;
 `;

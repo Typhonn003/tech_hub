@@ -1,24 +1,12 @@
 import { StyledDiv } from "./style";
 import { Input } from "../../components/Input/Default";
 import { PrimaryButton, StyledLink } from "../../components/Button/Default";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
-import { useNavigate } from "react-router-dom";
 
 export function LoginPage() {
 
   const { handleSubmit, login, register, loading, errors } = useContext(AuthContext);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-
-    const token = localStorage.getItem("user_token") || null;
-
-    if (token) {
-
-      navigate("/dashboard", { replace: true });
-    }
-  }, [navigate]);
 
   return (
     <StyledDiv>
