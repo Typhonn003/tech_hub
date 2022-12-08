@@ -4,11 +4,12 @@ import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { AuthContext } from "../../contexts/AuthContext";
 import { TechCard } from "../../components/TechCard";
+import { AddTechModal } from "../../components/Modal/AddTech";
 
 export function DashboardPage() {
 
-  const { logout } = useContext(UserContext)
-  const { user } = useContext(AuthContext)
+  const { techModal, openModal, logout } = useContext(UserContext)
+  const { user: { name, course_module, techs } } = useContext(AuthContext)
 
   return (
     <StyledDiv>
@@ -20,8 +21,8 @@ export function DashboardPage() {
       </nav>
       <StyledHeader>
         <div className="container">
-          <h2 className="title1">Olá, {`${user.name}`}</h2>
-          <p className="headline_bold">{user.course_module}</p>
+          <h2 className="title1">Olá, {name}</h2>
+          <p className="headline_bold">{course_module}</p>
         </div>
       </StyledHeader>
 
@@ -30,15 +31,16 @@ export function DashboardPage() {
           <div className="container">
             <div>
               <h2 className="title1">Tecnologias</h2>
-              <CommonButton>Adicionar</CommonButton>
+              <CommonButton onClick={openModal}>Adicionar</CommonButton>
             </div>
 
             <StyledList>
-              {user.techs.map(({id, title, status}) => <TechCard key={id} title={title} status={status}/>)}
+              {techs.map(({id, title, status}) => <TechCard key={id} title={title} status={status}/>)}
             </StyledList>
-          </div>          
+          </div>
         </StyledSection>
       </main>
+      {techModal ? <AddTechModal /> : null}
     </StyledDiv>
   )
 }

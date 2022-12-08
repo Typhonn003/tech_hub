@@ -17,6 +17,7 @@ export const GlobalStyle = createGlobalStyle`
     --toastify-color-dark: #343B41;
     --toastify-color-success: #3FE864;
     --toastify-color-error: #E83F5B;
+    --modal-wrapper: #00000050;
 
     --radius-8: 0.5rem;
     --radius-4: 0.25rem;

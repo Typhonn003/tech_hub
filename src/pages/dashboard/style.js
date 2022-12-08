@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const StyledDiv = styled.div`
-  width: 100vw;
-  min-height: 100vh;
+  width: 100%;
 
   background-color: var(--color-black);
 
@@ -39,9 +38,9 @@ export const StyledHeader = styled.header`
 
   @media (min-width: 1024px) {
     div {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
     }
   }
 `;
@@ -76,4 +75,4 @@ export const StyledList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-`
+`;

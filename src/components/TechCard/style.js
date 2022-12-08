@@ -30,13 +30,7 @@ export const StyledTechCard = styled.li`
 
   @media (min-width: 375px) {
     h2 {
-      max-width: 15ch;
-    }
-
-    @media (min-width: 500px) {
-      h2 {
-        max-width: 100ch;
-      }
+      max-width: 20ch;
     }
   }
 `;

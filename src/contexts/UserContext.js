@@ -1,11 +1,15 @@
 import { useNavigate } from "react-router-dom";
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 export const UserContext = createContext({});
 
 export function UserProvider({ children }) {
 
+  const [techModal, setTechModal] = useState(false)
   const navigate = useNavigate();
+
+  const openModal = () => setTechModal(true)
+  const closeModal = () => setTechModal(false)
 
   function logout() {
     
@@ -14,6 +18,6 @@ export function UserProvider({ children }) {
   }
 
   return (
-    <UserContext.Provider value={{ logout }}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ techModal, openModal, closeModal, logout }}>{children}</UserContext.Provider>
   );
 }
