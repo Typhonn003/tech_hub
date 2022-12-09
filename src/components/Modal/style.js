@@ -56,5 +56,9 @@ export const StyledForm = styled.form`
   div > button {
     min-width: 32px;
     padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 `;

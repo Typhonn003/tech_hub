@@ -8,8 +8,8 @@ import { AddTechModal } from "../../components/Modal/AddTech";
 
 export function DashboardPage() {
 
-  const { techModal, openModal, logout } = useContext(UserContext)
-  const { user: { name, course_module, techs }, userTechs } = useContext(AuthContext)
+  const { addTechModal, openAddModal, logout } = useContext(UserContext)
+  const { user: { name, course_module }, userTechs } = useContext(AuthContext)
 
   return (
     <StyledDiv>
@@ -31,11 +31,11 @@ export function DashboardPage() {
           <div className="container">
             <div>
               <h2 className="title1">Tecnologias</h2>
-              <CommonButton onClick={openModal}>Adicionar</CommonButton>
+              <CommonButton onClick={openAddModal}>Adicionar</CommonButton>
             </div>          
             {userTechs.length > 0 ? (
               <StyledList>
-                {techs.map(({ id, title, status }) => (
+                {userTechs.map(({ id, title, status }) => (
                   <TechCard key={id} title={title} status={status} />
                 ))}
               </StyledList>
@@ -49,7 +49,8 @@ export function DashboardPage() {
           </div>
         </StyledSection>
       </main>
-      {techModal ? <AddTechModal /> : null}
+      {addTechModal ? <AddTechModal /> : null}
+      {/* {editTechModal ? <EditTechModal /> : null} */}
     </StyledDiv>
   )
 }

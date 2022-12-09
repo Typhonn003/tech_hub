@@ -11,8 +11,8 @@ export const TechContext = createContext({});
 
 export function TechProvider({ children }) {
 
-  const { closeModal } = useContext(UserContext);
-  const { setTechsReload, techsReload } = useContext(AuthContext);
+  const { closeAddModal } = useContext(UserContext);
+  const { userTechs, setUserTechs } = useContext(AuthContext);
 
   const { register, handleSubmit, formState: { errors }, reset } = useForm({
     mode: "onChange",
@@ -23,12 +23,12 @@ export function TechProvider({ children }) {
 
     try {
 
-      await api.post("users/techs", data);
+      const response = await api.post("users/techs", data);
       toast.success("Sua tecnologia foi registrada com sucesso");
-      
-      setTechsReload(!techsReload)
+
+      setUserTechs([...userTechs, response.data])
       reset()
-      closeModal();
+      closeAddModal();
     } catch (error) {
 
       console.error(error);

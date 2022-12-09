@@ -5,11 +5,12 @@ export const UserContext = createContext({});
 
 export function UserProvider({ children }) {
 
-  const [techModal, setTechModal] = useState(false)
+  const [addTechModal, setAddTechModal] = useState(false)
+  /* const [editTechModal, setEditTechModal] = useState(false) */
   const navigate = useNavigate();
 
-  const openModal = () => setTechModal(true)
-  const closeModal = () => setTechModal(false)
+  const openAddModal = () => setAddTechModal(true)
+  const closeAddModal = () => setAddTechModal(false)
 
   function logout() {
     
@@ -18,6 +19,6 @@ export function UserProvider({ children }) {
   }
 
   return (
-    <UserContext.Provider value={{ techModal, openModal, closeModal, logout }}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ addTechModal, openAddModal, closeAddModal, logout }}>{children}</UserContext.Provider>
   );
 }

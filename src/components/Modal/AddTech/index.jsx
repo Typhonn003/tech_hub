@@ -6,18 +6,22 @@ import { Select } from "../../Input/Select";
 import { StyledForm, StyledModalWrapper } from "../style";
 import { TechContext } from "../../../contexts/TechContext";
 import { UserContext } from "../../../contexts/UserContext";
+import { CgClose } from "react-icons/cg";
 
 export function AddTechModal() {
 
-  const { closeModal } = useContext(UserContext)
-  const { handleSubmit, addNewTech, register, errors } = useContext(TechContext)
+  const { closeAddModal } = useContext(UserContext)
+  const { handleSubmit, addNewTech, register, errors, reset } = useContext(TechContext)
 
   return (
     <StyledModalWrapper>
       <StyledForm onSubmit={handleSubmit(addNewTech)}>
         <div>
             <h2 className="title2">Cadastrar Tecnologia</h2>
-            <CommonButton onClick={closeModal}>X</CommonButton>
+            <CommonButton type="button" onClick={() => {
+              closeAddModal()
+              reset()
+            }}><CgClose /></CommonButton>
         </div>
         <Input
           type="text"

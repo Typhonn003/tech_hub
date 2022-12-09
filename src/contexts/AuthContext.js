@@ -13,9 +13,8 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(false);
   const [loadUserLoading, setLoadUserLoading] = useState(true);
   const [user, setUser] = useState(null);
-  const [techsReload, setTechsReload] = useState(false);
-  const navigate = useNavigate();
   const [userTechs, setUserTechs] = useState([])
+  const navigate = useNavigate();
 
   const { register, handleSubmit, formState: { errors }, reset } = useForm({
     mode: "onChange",
@@ -52,7 +51,7 @@ export function AuthProvider({ children }) {
     }
 
     loadUser();
-  }, [techsReload]);
+  }, []);
 
   async function login(userData) {
 
@@ -60,12 +59,13 @@ export function AuthProvider({ children }) {
       
       setLoading(true);
       const response = await api.post("sessions", userData);
-
+      setUserTechs(response.data.user.techs)
       setUser(response.data.user);
       localStorage.setItem("user_token", response.data.token);
 
       api.defaults.headers.common.authorization = `Bearer ${response.data.token}`;
       
+      setUserTechs(response.data.user.techs)
       reset()
       navigate("/dashboard");
     } catch (error) {
@@ -89,8 +89,7 @@ export function AuthProvider({ children }) {
         user,
         loadUserLoading,
         userTechs,
-        setTechsReload,
-        techsReload
+        setUserTechs
       }}
     >
       {children}
