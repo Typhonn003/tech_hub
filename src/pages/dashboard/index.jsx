@@ -9,7 +9,7 @@ import { AddTechModal } from "../../components/Modal/AddTech";
 export function DashboardPage() {
 
   const { techModal, openModal, logout } = useContext(UserContext)
-  const { user: { name, course_module, techs } } = useContext(AuthContext)
+  const { user: { name, course_module, techs }, userTechs } = useContext(AuthContext)
 
   return (
     <StyledDiv>
@@ -33,7 +33,7 @@ export function DashboardPage() {
               <h2 className="title1">Tecnologias</h2>
               <CommonButton onClick={openModal}>Adicionar</CommonButton>
             </div>          
-            {techs.length > 0 ? (
+            {userTechs.length > 0 ? (
               <StyledList>
                 {techs.map(({ id, title, status }) => (
                   <TechCard key={id} title={title} status={status} />

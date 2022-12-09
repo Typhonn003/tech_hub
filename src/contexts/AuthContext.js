@@ -13,7 +13,9 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(false);
   const [loadUserLoading, setLoadUserLoading] = useState(true);
   const [user, setUser] = useState(null);
+  const [techsReload, setTechsReload] = useState(false);
   const navigate = useNavigate();
+  const [userTechs, setUserTechs] = useState([])
 
   const { register, handleSubmit, formState: { errors }, reset } = useForm({
     mode: "onChange",
@@ -39,6 +41,7 @@ export function AuthProvider({ children }) {
         const response = await api.get("profile");
 
         setUser(response.data);
+        setUserTechs(response.data.techs)
       } catch (error) {
 
         console.error(error);
@@ -49,7 +52,7 @@ export function AuthProvider({ children }) {
     }
 
     loadUser();
-  }, []);
+  }, [techsReload]);
 
   async function login(userData) {
 
@@ -85,6 +88,9 @@ export function AuthProvider({ children }) {
         errors,
         user,
         loadUserLoading,
+        userTechs,
+        setTechsReload,
+        techsReload
       }}
     >
       {children}
