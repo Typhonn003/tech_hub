@@ -1,4 +1,4 @@
-import { StyledPrimaryButton, StyledNegativeButton, StyledDisableButton, StyledLink as Link } from "./style";
+import { StyledPrimaryButton, StyledNegativeButton, StyledLink as Link } from "./style";
 
 export function PrimaryButton({ children, onClick, type, disabled }) {
 

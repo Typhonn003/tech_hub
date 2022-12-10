@@ -1,9 +1,9 @@
 import { StyledCommonButton, StyledLink as Link } from "./style";
 
-export function CommonButton({ children, onClick }) {
+export function CommonButton({ children, onClick, type }) {
 
   return (
-    <StyledCommonButton onClick={onClick}>{children}</StyledCommonButton>
+    <StyledCommonButton type={type} onClick={onClick}>{children}</StyledCommonButton>
   );
 }
 
