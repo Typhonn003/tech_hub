@@ -5,11 +5,14 @@ import { UserContext } from "../../contexts/UserContext";
 import { AuthContext } from "../../contexts/AuthContext";
 import { TechCard } from "../../components/TechCard";
 import { AddTechModal } from "../../components/Modal/AddTech";
+import { EditTechModal } from "../../components/Modal/EditTech";
+import { TechContext } from "../../contexts/TechContext";
 
 export function DashboardPage() {
 
-  const { addTechModal, openAddModal, logout } = useContext(UserContext)
+  const { addTechModal, openAddModal, editTechModal, openEditModal, logout } = useContext(UserContext)
   const { user: { name, course_module }, userTechs } = useContext(AuthContext)
+  const { setItem } = useContext(TechContext)
 
   return (
     <StyledDiv>
@@ -32,11 +35,19 @@ export function DashboardPage() {
             <div>
               <h2 className="title1">Tecnologias</h2>
               <CommonButton onClick={openAddModal}>Adicionar</CommonButton>
-            </div>          
+            </div>
             {userTechs.length > 0 ? (
               <StyledList>
-                {userTechs.map(({ id, title, status }) => (
-                  <TechCard key={id} title={title} status={status} />
+                {userTechs.map((tech) => (
+                  <TechCard
+                    key={tech.id}
+                    title={tech.title}
+                    status={tech.status}
+                    onClick={() => {
+                      openEditModal();
+                      setItem(tech);
+                    }}
+                  />
                 ))}
               </StyledList>
             ) : (
@@ -50,7 +61,7 @@ export function DashboardPage() {
         </StyledSection>
       </main>
       {addTechModal ? <AddTechModal /> : null}
-      {/* {editTechModal ? <EditTechModal /> : null} */}
+      {editTechModal ? <EditTechModal /> : null}
     </StyledDiv>
-  )
+  );
 }

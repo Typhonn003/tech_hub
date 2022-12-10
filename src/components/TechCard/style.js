@@ -17,6 +17,8 @@ export const StyledTechCard = styled.li`
 
   transition: 0.5s;
 
+  cursor: pointer;
+
   h2 {
     max-width: 10ch;
     overflow: hidden;

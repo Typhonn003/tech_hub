@@ -61,4 +61,18 @@ export const StyledForm = styled.form`
     align-items: center;
     justify-content: center;
   }
+
+  .buttons > button:first-child {
+    width: 68%;
+  }
+
+  .buttons > button:last-child {
+    width: 28%;
+
+    background-color: var(--color-grey2);
+
+    :hover {
+      background-color: var(--color-grey1);
+    }
+  }
 `;
