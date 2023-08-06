@@ -33,4 +33,5 @@ export const registerSchema = yup.object().shape({
     .required("Opção de contato obrigatório*")
     .min(10, "Pelo menos 10 caracteres")
     .max(50, "Máximo de 50 caracteres"),
+  course_module: yup.string(),
 });

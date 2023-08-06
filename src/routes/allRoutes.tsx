@@ -6,12 +6,14 @@ import { UserProvider } from "../contexts/UserContext";
 import { DashboardPage } from "../pages/dashboard";
 import { RegisterPage } from "../pages/register"; */
 import { LoginPage } from "../pages";
+import { RegisterProvider } from "../contexts/registerContext";
+import { RegisterPage } from "../pages/register/register";
 
 export function AllRoutes() {
   return (
     <Routes>
       <Route path="/login" element={<LoginPage />} />
-      {/* <Route
+      <Route
         path="/register"
         element={
           <RegisterProvider>
@@ -19,7 +21,7 @@ export function AllRoutes() {
           </RegisterProvider>
         }
       />
-      <Route element={<ProtectedRoutes />}>
+      {/* <Route element={<ProtectedRoutes />}>
         <Route
           path="/dashboard"
           element={

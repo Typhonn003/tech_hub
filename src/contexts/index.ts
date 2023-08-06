@@ -1,3 +1,4 @@
 import { AuthContext } from "./authContext";
+import { RegisterContext } from "./registerContext";
 
-export { AuthContext };
+export { AuthContext, RegisterContext };
