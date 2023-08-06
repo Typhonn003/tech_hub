@@ -10,7 +10,7 @@ import {
   StyledLinkMedium,
 } from "../../components";
 
-export function RegisterPage() {
+export const RegisterPage = () => {
   const { registerUser, loading } = useRegister();
 
   const {
@@ -141,4 +141,4 @@ export function RegisterPage() {
       </div>
     </StyledDiv>
   );
-}
+};

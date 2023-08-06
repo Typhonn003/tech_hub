@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../../schemas";
 import { useAuth } from "../../hooks";
 
-export function LoginPage() {
+export const LoginPage = () => {
   const { login, loading } = useAuth();
 
   const {
@@ -61,4 +61,4 @@ export function LoginPage() {
       </div>
     </StyledDiv>
   );
-}
+};

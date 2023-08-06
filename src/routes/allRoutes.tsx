@@ -9,7 +9,7 @@ import { LoginPage } from "../pages";
 import { RegisterProvider } from "../contexts/registerContext";
 import { RegisterPage } from "../pages/register/register";
 
-export function AllRoutes() {
+export const AllRoutes = () => {
   return (
     <Routes>
       <Route path="/login" element={<LoginPage />} />
@@ -36,4 +36,4 @@ export function AllRoutes() {
       <Route path="*" element={<Navigate to="/login" />} />
     </Routes>
   );
-}
+};

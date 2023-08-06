@@ -17,7 +17,7 @@ export const RegisterContext = createContext<RegisterContextValues>(
   {} as RegisterContextValues
 );
 
-export function RegisterProvider({ children }: RegisterProviderProps) {
+export const RegisterProvider = ({ children }: RegisterProviderProps) => {
   const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
 
@@ -41,4 +41,4 @@ export function RegisterProvider({ children }: RegisterProviderProps) {
       {children}
     </RegisterContext.Provider>
   );
-}
+};
