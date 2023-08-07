@@ -1,4 +1,4 @@
-import { TechData } from "./tech";
+import { FullTechData } from "./tech";
 import { WorkData } from "./work";
 
 export interface UserData {
@@ -8,7 +8,7 @@ export interface UserData {
   course_module: string;
   bio: string;
   contact: string;
-  techs: TechData[];
+  techs: FullTechData[];
   works: WorkData[];
   created_at: string;
   updated_at: string;

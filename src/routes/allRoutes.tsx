@@ -1,10 +1,8 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import { LoginPage } from "../pages";
+import { DashboardPage, LoginPage, RegisterPage } from "../pages";
 import { RegisterProvider } from "../contexts/registerContext";
-import { RegisterPage } from "../pages/register/register";
 import { ProtectedRoutes } from "../components";
 import { TechProvider, UserProvider } from "../contexts";
-import { DashboardPage } from "../pages/dashboard/dashboard";
 
 export const AllRoutes = () => {
   return (

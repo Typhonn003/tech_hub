@@ -20,7 +20,7 @@ export const StyledSelect = styled.select`
   font-family: "Inter", sans-serif;
   font-weight: 400;
 
-  :focus {
+  &:focus {
     border: 2px solid var(--color-grey0);
   }
 `;

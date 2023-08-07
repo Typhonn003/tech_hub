@@ -20,11 +20,11 @@ export const StyledInput = styled.input`
   font-family: "Inter", sans-serif;
   font-weight: 400;
 
-  ::placeholder {
+  &::placeholder {
     color: var(--color-grey1);
   }
 
-  :focus {
+  &:focus {
     border: 2px solid var(--color-grey0);
   }
 

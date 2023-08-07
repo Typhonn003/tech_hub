@@ -16,7 +16,7 @@ interface AuthContextValues {
   loadUserLoading: boolean;
   user: UserData | null;
   userTechs: FullTechData[];
-  setUserTechs: (value: FullTechData[]) => void
+  setUserTechs: (value: FullTechData[]) => void;
 }
 
 export const AuthContext = createContext<AuthContextValues>(
@@ -84,7 +84,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         loadUserLoading,
         user,
         userTechs,
-        setUserTechs
+        setUserTechs,
       }}
     >
       {children}
