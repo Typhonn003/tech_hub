@@ -9,6 +9,7 @@ interface TechProviderProps {
 }
 
 interface TechContextValues {
+  item: FullTechData | null;
   setItem: (value: FullTechData) => void;
   addNewTech: (value: NewTechData) => void;
   editTech: (value: EditTechData) => void;
@@ -72,6 +73,7 @@ export const TechProvider = ({ children }: TechProviderProps) => {
   return (
     <TechContext.Provider
       value={{
+        item,
         setItem,
         addNewTech,
         editTech,

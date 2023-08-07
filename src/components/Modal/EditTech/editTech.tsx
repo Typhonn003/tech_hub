@@ -1,18 +1,22 @@
-import { useContext } from "react";
-import { UserContext } from "../../../contexts/userContext";
 import { StyledForm, StyledModalWrapper } from "../style";
 import { CgClose } from "react-icons/cg";
-import { TechContext } from "../../../contexts/techContext";
 import { CommonButton, Input, PrimaryButton, Select } from "../..";
+import { useTech, useUser } from "../../../hooks";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { newTechSchema } from "../../../schemas";
 
 export const EditTechModal = () => {
-  const { item, editRegister, editHandleSubmit, editTech, deleteTech } =
-    useContext(TechContext);
-  const { closeEditModal } = useContext(UserContext);
+  const { closeEditModal } = useUser();
+  const { item, editTech, deleteTech } = useTech();
+
+  const { register, handleSubmit } = useForm({
+    resolver: yupResolver(newTechSchema),
+  });
 
   return (
     <StyledModalWrapper>
-      <StyledForm onSubmit={editHandleSubmit(editTech)}>
+      <StyledForm onSubmit={handleSubmit(editTech)}>
         <div>
           <h2 className="title2">Detalhes da tecnologia</h2>
           <CommonButton type="button" onClick={closeEditModal}>
@@ -23,14 +27,14 @@ export const EditTechModal = () => {
           type="text"
           id="name"
           label="Nome do projeto"
-          defaultValue={item.title}
-          disabled={true}
+          register={register("title")}
+          defaultValue={item!.title}
         />
         <Select
           id="status"
           label="Status"
-          register={editRegister("status")}
-          defaultValue={item.status}
+          register={register("status")}
+          defaultValue={item!.status}
         >
           <option value="Iniciante">Iniciante</option>
           <option value="Intermediário">Intermediário</option>
