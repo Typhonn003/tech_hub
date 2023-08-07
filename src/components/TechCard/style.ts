@@ -26,7 +26,7 @@ export const StyledTechCard = styled.li`
     white-space: nowrap;
   }
 
-  :hover {
+  &:hover {
     background-color: var(--color-grey2);
   }
 

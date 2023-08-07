@@ -6,11 +6,11 @@ const StyledButton = styled.button``;
 export const StyledPrimaryButton = styled(StyledButton)`
   background-color: var(--color-primary);
 
-  :hover {
+  &:hover {
     background-color: var(--color-primary-hover);
   }
 
-  :disabled {
+  &:disabled {
     background-color: var(--color-grey1);
   }
 `;
@@ -44,7 +44,7 @@ export const StyledLink = styled(Link)`
 
   transition: 0.5s;
 
-  :hover {
+  &:hover {
     background-color: var(--color-grey2);
   }
 `;

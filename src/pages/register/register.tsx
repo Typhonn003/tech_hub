@@ -26,7 +26,7 @@ export const RegisterPage = () => {
     <StyledDiv>
       <div className="container">
         <StyledHeader>
-          <h1 className="title1">Kenzie Hub</h1>
+          <h1 className="title1">Tech Hub</h1>
           <StyledLinkMedium to={"/login"}>Voltar</StyledLinkMedium>
         </StyledHeader>
 

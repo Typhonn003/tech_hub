@@ -93,5 +93,7 @@ export const StyledHeader = styled.header`
 
   h1 {
     color: var(--color-primary);
+    font-family: "Knewave", cursive;
+    font-weight: 100;
   }
 `;

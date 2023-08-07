@@ -5,11 +5,15 @@ import {
   StyledList,
   StyledSection,
 } from "./style";
-import { TechCard } from "../../components/TechCard";
 import { useAuth, useTech, useUser } from "../../hooks";
-import { AddTechModal, CommonButton, EditTechModal } from "../../components";
+import {
+  AddTechModal,
+  CommonButton,
+  EditTechModal,
+  TechCard,
+} from "../../components";
 
-export function DashboardPage() {
+export const DashboardPage = () => {
   const { addTechModal, openAddModal, editTechModal, openEditModal, logout } =
     useUser();
   const { user, userTechs } = useAuth();
@@ -19,7 +23,7 @@ export function DashboardPage() {
     <StyledDiv>
       <nav>
         <div className="container">
-          <h1 className="title1">Kenzie Hub</h1>
+          <h1 className="title1">Tech Hub</h1>
           <CommonButton type="button" onClick={logout}>
             Sair
           </CommonButton>
@@ -58,7 +62,7 @@ export function DashboardPage() {
             ) : (
               <StyledEmptyList>
                 <h2 className="title2">
-                  Você ainda não adicionou nenhuma tecnologia
+                  Você ainda não adicionou nenhuma tecnologia! <span>=(</span>
                 </h2>
               </StyledEmptyList>
             )}
@@ -69,4 +73,4 @@ export function DashboardPage() {
       {editTechModal ? <EditTechModal /> : null}
     </StyledDiv>
   );
-}
+};

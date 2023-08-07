@@ -7,6 +7,8 @@ export const StyledDiv = styled.div`
 
   h1 {
     color: var(--color-primary);
+    font-family: "Knewave", cursive;
+    font-weight: 100;
   }
 
   nav {
@@ -50,6 +52,7 @@ export const StyledSection = styled.section`
 
   span {
     color: var(--color-primary);
+    transform: rotate(1024px);
   }
 
   div {
@@ -72,7 +75,7 @@ export const StyledList = styled.ul`
 
   padding: 20px;
 
-  height: 60vh;
+  max-height: 50vh;
 
   display: flex;
   flex-direction: column;

@@ -19,6 +19,8 @@ export const StyledDiv = styled.div`
     color: var(--color-primary);
 
     margin-top: 2rem;
+    font-family: "Knewave", cursive;
+    font-weight: 100;
   }
 
   h2 {

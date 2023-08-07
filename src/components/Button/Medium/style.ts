@@ -8,7 +8,7 @@ const StyledMediumButton = styled.button`
 export const StyledCommonButton = styled(StyledMediumButton)`
   background-color: var(--color-grey3);
 
-  :hover {
+  &:hover {
     background-color: var(--color-grey2);
   }
 `;
@@ -37,7 +37,7 @@ export const StyledLink = styled(Link)`
   border: none;
 
   transition: 0.5s;
-  :hover {
+  &:hover {
     background-color: var(--color-grey2);
   }
 `;

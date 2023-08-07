@@ -20,7 +20,7 @@ export const LoginPage = () => {
   return (
     <StyledDiv>
       <div className="container">
-        <h1 className="title1">Kenzie Hub</h1>
+        <h1 className="title1">Tech Hub</h1>
 
         <form onSubmit={handleSubmit(login)}>
           <h2 className="title2">Login</h2>
