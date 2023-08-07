@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { UserContext } from "../../../contexts/UserContext";
+import { UserContext } from "../../../contexts/userContext";
 import { StyledForm, StyledModalWrapper } from "../style";
 import { CgClose } from "react-icons/cg";
-import { TechContext } from "../../../contexts/TechContext";
+import { TechContext } from "../../../contexts/techContext";
 import { CommonButton, Input, PrimaryButton, Select } from "../..";
 
 export const EditTechModal = () => {

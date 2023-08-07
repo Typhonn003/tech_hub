@@ -5,4 +5,8 @@ export const newTechSchema = yup.object().shape({
     .string()
     .required("Nome obrigatório*")
     .max(16, "Nome máximo de 16 caracteres"),
+  status: yup
+    .string()
+    .required()
+    .oneOf(["Iniciante", "Intermediário", "Avançado"]),
 });

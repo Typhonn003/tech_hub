@@ -1,13 +1,10 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-/* import { ProtectedRoutes } from "../components/ProtectedRoutes";
-import { RegisterProvider } from "../contexts/RegisterContext";
-import { TechProvider } from "../contexts/TechContext";
-import { UserProvider } from "../contexts/UserContext";
-import { DashboardPage } from "../pages/dashboard";
-import { RegisterPage } from "../pages/register"; */
 import { LoginPage } from "../pages";
 import { RegisterProvider } from "../contexts/registerContext";
 import { RegisterPage } from "../pages/register/register";
+import { ProtectedRoutes } from "../components";
+import { TechProvider, UserProvider } from "../contexts";
+import { DashboardPage } from "../pages/dashboard/dashboard";
 
 export const AllRoutes = () => {
   return (
@@ -21,7 +18,7 @@ export const AllRoutes = () => {
           </RegisterProvider>
         }
       />
-      {/* <Route element={<ProtectedRoutes />}>
+      <Route element={<ProtectedRoutes />}>
         <Route
           path="/dashboard"
           element={
@@ -32,7 +29,7 @@ export const AllRoutes = () => {
             </UserProvider>
           }
         />
-      </Route> */}
+      </Route>
       <Route path="*" element={<Navigate to="/login" />} />
     </Routes>
   );

@@ -1,27 +1,30 @@
-import { useContext } from "react";
 import { StyledForm, StyledModalWrapper } from "../style";
-import { TechContext } from "../../../contexts/TechContext";
-import { UserContext } from "../../../contexts/UserContext";
 import { CgClose } from "react-icons/cg";
 import { CommonButton, Input, PrimaryButton, Select } from "../..";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { newTechSchema } from "../../../schemas";
+import { useTech, useUser } from "../../../hooks";
 
 export const AddTechModal = () => {
-  const { closeAddModal } = useContext(UserContext);
-  const { handleSubmit, addNewTech, register, errors, reset } =
-    useContext(TechContext);
+  const { addNewTech } = useTech();
+  const { closeAddModal } = useUser();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(newTechSchema),
+    mode: "onChange",
+  });
 
   return (
     <StyledModalWrapper>
       <StyledForm onSubmit={handleSubmit(addNewTech)}>
         <div>
           <h2 className="title2">Cadastrar Tecnologia</h2>
-          <CommonButton
-            type="button"
-            onClick={() => {
-              closeAddModal();
-              reset();
-            }}
-          >
+          <CommonButton type="button" onClick={closeAddModal}>
             <CgClose />
           </CommonButton>
         </div>

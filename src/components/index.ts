@@ -6,6 +6,8 @@ import {
 import { CommonButton, StyledLinkMedium } from "./Button/Medium/mediumButton";
 import { Input } from "./Input/Default/defaultInput";
 import { Select } from "./Input/Select/selectInput";
+import { AddTechModal } from "./Modal/AddTech/addTech";
+import { EditTechModal } from "./Modal/EditTech/editTech";
 import { ProtectedRoutes } from "./ProtectedRoutes/protectedRoutes";
 
 export {
@@ -16,5 +18,7 @@ export {
   StyledLinkMedium,
   Input,
   Select,
+  AddTechModal,
+  EditTechModal,
   ProtectedRoutes,
 };

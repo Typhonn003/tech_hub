@@ -1,4 +1,13 @@
-export interface TechData {
+export interface NewTechData {
+  title: string;
+  status: string;
+}
+
+export interface EditTechData {
+  status: string;
+}
+
+export interface FullTechData {
   id: string;
   title: string;
   status: string;

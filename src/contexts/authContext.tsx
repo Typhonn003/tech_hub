@@ -1,11 +1,10 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { api } from "../services/api";
 import { useNavigate } from "react-router-dom";
-import { ReactNode } from "react";
 import { LoginData } from "../interfaces/login";
 import { UserData } from "../interfaces/user";
-import { TechData } from "../interfaces/tech";
+import { FullTechData } from "../interfaces/tech";
 
 interface AuthProviderProps {
   children: ReactNode;
@@ -16,7 +15,8 @@ interface AuthContextValues {
   loading: boolean;
   loadUserLoading: boolean;
   user: UserData | null;
-  userTechs: TechData[] | null;
+  userTechs: FullTechData[];
+  setUserTechs: (value: FullTechData[]) => void
 }
 
 export const AuthContext = createContext<AuthContextValues>(
@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [loadUserLoading, setLoadUserLoading] = useState<boolean>(true);
   const [user, setUser] = useState<UserData | null>(null);
-  const [userTechs, setUserTechs] = useState<TechData[] | null>(null);
+  const [userTechs, setUserTechs] = useState<FullTechData[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -84,6 +84,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         loadUserLoading,
         user,
         userTechs,
+        setUserTechs
       }}
     >
       {children}

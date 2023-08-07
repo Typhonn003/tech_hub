@@ -1,10 +1,25 @@
 import { useNavigate } from "react-router-dom";
-import { createContext, useState } from "react";
+import { createContext, ReactNode, useState } from "react";
 
-export const UserContext = createContext({});
+interface UserProviderProps {
+  children: ReactNode;
+}
 
-export function UserProvider({ children }) {
-  
+interface UserContextValues {
+  addTechModal: boolean;
+  openAddModal: () => void;
+  closeAddModal: () => void;
+  editTechModal: boolean;
+  openEditModal: () => void;
+  closeEditModal: () => void;
+  logout: () => void;
+}
+
+export const UserContext = createContext<UserContextValues>(
+  {} as UserContextValues
+);
+
+export const UserProvider = ({ children }: UserProviderProps) => {
   const [addTechModal, setAddTechModal] = useState(false);
   const [editTechModal, setEditTechModal] = useState(false);
   const navigate = useNavigate();
@@ -14,11 +29,10 @@ export function UserProvider({ children }) {
   const openEditModal = () => setEditTechModal(true);
   const closeEditModal = () => setEditTechModal(false);
 
-  function logout() {
-
+  const logout = () => {
     localStorage.clear();
     navigate("/login");
-  }
+  };
 
   return (
     <UserContext.Provider
@@ -35,4 +49,4 @@ export function UserProvider({ children }) {
       {children}
     </UserContext.Provider>
   );
-}
+};
